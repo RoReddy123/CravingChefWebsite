@@ -19,8 +19,9 @@
   body {
     font-family: 'Outfit', sans-serif;
     background: var(--cream);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: flex-start; justify-content: center;
     min-height: 100vh; overflow-x: hidden; overflow-y: auto;
+    padding: 40px 16px 56px;
   }
 
   /* Grain texture */
@@ -68,7 +69,12 @@
 
   .sub {
     font-size: 14px; font-weight: 300; color: var(--muted);
-    line-height: 1.6; max-width: 280px; margin-top: 12px;
+    line-height: 1.6; max-width: 320px; margin-top: 12px;
+  }
+  .sub-lead {
+    font-size: 13px; font-weight: 400; color: var(--muted);
+    line-height: 1.55; max-width: 320px; margin-top: 10px;
+    opacity: .95;
   }
 
   /* Thick rule */
@@ -346,6 +352,118 @@
     color:var(--ink);font-weight:700;text-decoration:none;
     border-bottom:1.5px solid var(--blue);padding-bottom:1px;
   }
+  a.btn-primary { text-decoration: none; color: #fff; }
+
+  /* ── Feature & spotlight bands ── */
+  .content-band {
+    width: 100%;
+    margin-top: 4px;
+    animation: fadeUp .75s ease both;
+  }
+  .content-band.delay-1 { animation-delay: .08s; }
+  .content-band.delay-2 { animation-delay: .16s; }
+  .content-band.delay-3 { animation-delay: .24s; }
+  .band-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: .18em;
+    color: var(--blue); text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .band-label::before {
+    content: ''; width: 20px; height: 1.5px; background: var(--blue);
+  }
+  .band-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; line-height: 1.12;
+    color: var(--ink); letter-spacing: -.02em;
+    margin-bottom: 6px;
+  }
+  .band-intro {
+    font-size: 13px; font-weight: 400; color: var(--muted);
+    line-height: 1.55; margin-bottom: 18px;
+  }
+  .feature-stack {
+    display: flex; flex-direction: column; gap: 11px;
+  }
+  .feature-card {
+    background: #fff;
+    border: 1.5px solid var(--rule);
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .feature-card:hover {
+    border-color: rgba(0, 85, 255, .22);
+    box-shadow: 0 8px 24px rgba(0, 40, 160, .07);
+  }
+  .feature-card h3 {
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    margin-bottom: 6px; letter-spacing: -.01em;
+  }
+  .feature-card p {
+    font-size: 13px; font-weight: 400; color: var(--muted);
+    line-height: 1.55;
+  }
+  .content-band + .content-band { margin-top: 36px; }
+
+  .coming-strip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 28px;
+    animation: fadeUp .75s .2s ease both;
+  }
+  .coming-tile {
+    background: var(--blue-light);
+    border: 1.5px solid rgba(0, 85, 255, .12);
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .coming-tile .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .coming-tile strong {
+    font-size: 13px; font-weight: 700; display: block; color: var(--ink);
+  }
+  .coming-tile span {
+    font-size: 11px; color: var(--muted); margin-top: 5px; display: block;
+    line-height: 1.4;
+  }
+
+  .site-footer {
+    width: 100%;
+    margin-top: 32px;
+    padding-top: 22px;
+    border-top: 1.5px solid var(--rule);
+    text-align: center;
+    animation: fadeUp .75s .28s ease both;
+  }
+  .site-footer .foot-links {
+    display: flex; flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+    margin-bottom: 14px;
+  }
+  .site-footer a {
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .site-footer a:hover {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+  .site-footer .copyright {
+    font-size: 11px; color: var(--muted); opacity: .88;
+  }
 
   @keyframes fadeUp {
     from{opacity:0;transform:translateY(18px)}
@@ -360,7 +478,8 @@
   <div class="header-block">
     <div class="eyebrow">CravingChef · Est. 2025</div>
     <div class="headline">Eat what<br>you <em>crave.</em></div>
-    <div class="sub">Discover, plan and cook extraordinary meals — all in one place.</div>
+    <div class="sub">Discover, plan, and cook extraordinary meals — all in one place.</div>
+    <p class="sub-lead">A social food platform: your personalized recipe feed, chefs you follow, smart grocery lists, and nutrition tracking in one delicious experience.</p>
   </div>
 
   <!-- Phone + decorative card -->
@@ -469,20 +588,90 @@
     </div>
 
     <div class="pills">
-      <div class="pill">🗓️ Meal Planning</div>
-      <div class="pill">🛒 Grocery Lists</div>
-      <div class="pill">📊 Nutrition</div>
-      <div class="pill">📤 Upload Recipes</div>
+      <div class="pill">🗓️ Meal planning</div>
+      <div class="pill">🛒 Smart grocery lists</div>
+      <div class="pill">📊 Nutrition tracking</div>
+      <div class="pill">👨‍🍳 Follow chefs</div>
+    </div>
+
+    <div class="rule"></div>
+
+    <section class="content-band" aria-labelledby="feat-heading">
+      <div class="band-label">Features</div>
+      <h2 class="band-headline" id="feat-heading">Your all-in-one culinary companion</h2>
+      <p class="band-intro">Plan meals, shop smarter, and stay on top of macros—without juggling five different apps.</p>
+      <div class="feature-stack">
+        <article class="feature-card">
+          <h3>Meal planning</h3>
+          <p>Plan your week with personalized suggestions so you always know what’s cooking next.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Smart grocery lists</h3>
+          <p>Generate and organize your shopping list from the recipes you choose—ready when you hit the store.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Nutrition tracking</h3>
+          <p>Log calories and macros as you cook and enjoy, so your goals stay aligned with real meals.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-band delay-1" aria-labelledby="spot-heading">
+      <div class="band-label">Spotlight</div>
+      <h2 class="band-headline" id="spot-heading">Built for discovery</h2>
+      <p class="band-intro">Scroll a feed that learns what you love, learn from chefs you follow, and cook along with video.</p>
+      <div class="feature-stack">
+        <article class="feature-card">
+          <h3>Personalized recipe feed</h3>
+          <p>Endless inspiration tuned to your tastes—the more you engage, the better it gets.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Interactive personalization</h3>
+          <p>Like clips, save dishes, and add them to your meal plan to train what shows up next.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Chef following</h3>
+          <p>Follow your favorite creators, save their recipes, and dig deeper into their cooking style.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Step-by-step video tutorials</h3>
+          <p>Cook along with clear video guides—pause, rewind, and set your own pace in the kitchen.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="coming-strip" aria-label="Coming soon">
+      <div class="coming-tile">
+        <div class="tag">Mobile</div>
+        <strong>CravingChef app</strong>
+        <span>Coming soon</span>
+      </div>
+      <div class="coming-tile">
+        <div class="tag">Editorial</div>
+        <strong>Home blog</strong>
+        <span>Recipes &amp; kitchen stories—coming soon</span>
+      </div>
     </div>
 
     <div class="rule"></div>
 
     <div class="cta">
-      <button class="btn-primary">
-        Get started <div class="btn-arrow">→</div>
-      </button>
-      <div class="signin-row">Already have an account? <a href="#">Sign in</a></div>
+      <a class="btn-primary" href="https://cravingchef.com">
+        Get started <span class="btn-arrow">→</span>
+      </a>
+      <div class="signin-row">Already have an account? <a href="https://cravingchef.com">Sign in</a></div>
     </div>
+
+    <footer class="site-footer">
+      <div class="foot-links">
+        <a href="https://cravingchef.com">CravingChef.com</a>
+        <a href="https://cravingchef.com">Instagram</a>
+        <a href="https://cravingchef.com">TikTok</a>
+        <a href="https://cravingchef.com">Privacy</a>
+        <a href="https://cravingchef.com">Terms</a>
+      </div>
+      <p class="copyright">© 2025 CravingChef</p>
+    </footer>
   </div>
 
 </div>
